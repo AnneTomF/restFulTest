@@ -25,12 +25,22 @@ namespace RestFulBackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var urls = Configuration.GetSection("cors:default").Value.Split(',');
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins", builder =>
+                {
+                    builder.WithOrigins(urls).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
+            });
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("AllowOrigins");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -1,6 +1,6 @@
 <template>
 <div>
-{{("2017/11/14 10:46:56").splice(":")}}
+{{"2017/11/14 10:46:56"}}
 <el-tag>标签一</el-tag>
    <router-link to="/ProjectProgress">ProjectProgress</router-link>
    <input :selfUpdate="true" v-model="tableData[1].name" ></input>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
    data() {
       return {
@@ -101,7 +102,6 @@ export default {
         }
       })
       console.log("tableData",nameq)
-
       var obj = {};
       var initValue = 'hello';
       Object.defineProperty(obj,"newKey",{
@@ -121,6 +121,18 @@ export default {
       obj.newKey = 'change value';
 
       console.log( obj.newKey ); //change value
+
+
+
+      //api
+      // 为给定 ID 的 user 创建请求
+      axios.get('https://localhost:44313/weatherforecast')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 }
 </script>
