@@ -125,8 +125,32 @@ export default {
 
 
       //api
-      // 为给定 ID 的 user 创建请求
+      // 为给定 ID 的 weather 创建请求
       axios.get('https://localhost:44313/weatherforecast')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      // 为给定 ID 的 weather 创建请求
+      axios.post('https://localhost:44313/weatherforecast')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      // 为给定 ID 的 weather 创建请求
+      axios.put('https://localhost:44313/weatherforecast')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      // 为给定 ID 的 weather 创建请求
+      axios.delete('https://localhost:44313/weatherforecast')
       .then(function (response) {
         console.log(response);
       })
