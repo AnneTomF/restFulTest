@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RestFulBackEnd;
+using RestFulBackEnd.demo;
 
 namespace RestFulBackEnd.Controllers
 {
@@ -35,8 +38,20 @@ namespace RestFulBackEnd.Controllers
             })
             .ToArray();
         }
+        [HttpGet("{id}")]      //        [Route("Weather")]  //天气
+        public IEnumerable<WeatherForecast> Get([FromRoute] int id)
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
         [HttpPost]      //        [Route("Weather")]  //天气
-        public IEnumerable<WeatherForecast> Post()
+        public IEnumerable<WeatherForecast> Post([FromBody] Class classDemo)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -48,8 +63,8 @@ namespace RestFulBackEnd.Controllers
             .ToArray();
         }
 
-        [HttpDelete]
-        public IEnumerable<WeatherForecast> Delete()
+        [HttpDelete("{id}")]
+        public IEnumerable<WeatherForecast> Delete([FromRoute] int id)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -61,8 +76,8 @@ namespace RestFulBackEnd.Controllers
             .ToArray();
         }
 
-        [HttpPut]
-        public IEnumerable<WeatherForecast> Put()
+        [HttpPut("{id}")]
+        public IEnumerable<WeatherForecast> Put([FromRoute] int id, [FromBody] Class classDemo)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -80,5 +95,19 @@ namespace RestFulBackEnd.Controllers
             int letId = id;
             id = (letId - 1) * id;
         }
+
+        [HttpPatch("{id}")]
+        public IEnumerable<WeatherForecast> Patch([FromRoute] int id, [FromBody] Class classDemo)
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+
     }
 }

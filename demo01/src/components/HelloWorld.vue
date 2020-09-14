@@ -125,32 +125,53 @@ export default {
 
 
       //api
+      //为给定 ID 的 weather 创建请求
+      // axios.get('https://localhost:44313/weatherforecast/5')
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+
       // 为给定 ID 的 weather 创建请求
-      axios.get('https://localhost:44313/weatherforecast')
-      .then(function (response) {
-        console.log(response);
+      // axios.post('https://localhost:44313/weatherforecast', {
+      //   id: 10,
+      //   name: 'postName',
+      //   className: 'postClass'
+      // })
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+      // // 为给定 ID 的 weather 创建请求
+      // axios.put('https://localhost:44313/weatherforecast/5',
+      // {
+      //   id: 10,
+      //   name: 'postName',
+      // })
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+      // // 为给定 ID 的 weather 创建请求
+      // axios.delete('https://localhost:44313/weatherforecast/5')
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+
+      // // 为给定 ID 的 weather 创建请求
+      axios.patch('https://localhost:44313/weatherforecast/5',
+      {
+        name: "postName"
       })
-      .catch(function (error) {
-        console.log(error);
-      });
-      // 为给定 ID 的 weather 创建请求
-      axios.post('https://localhost:44313/weatherforecast')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      // 为给定 ID 的 weather 创建请求
-      axios.put('https://localhost:44313/weatherforecast')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      // 为给定 ID 的 weather 创建请求
-      axios.delete('https://localhost:44313/weatherforecast')
       .then(function (response) {
         console.log(response);
       })
